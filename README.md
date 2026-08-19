@@ -38,9 +38,9 @@ pinned to one release in the workspace `Cargo.toml`. Its documentation lives at
   Raspberry Pi 5 (gateway)                  Laptop
  ┌──────────────────────────┐              ┌───────────────────────────────────────┐
  │ pq-meter-client          │              │ pq-meter-server                       │
- │                          │  your LAN    │  ┌─────────────────────────────────┐  │
+ │                          │  your WLAN   │  ┌─────────────────────────────────┐  │
  │  SCION stack ────────────┼─────────────►│  │ PocketSCION                     │  │
- │   HTTP/3 POST            │  (UDP)       │  │  1-ff00:0:132 ─── 2-ff00:0:212  │  │
+ │   HTTP/3 POST            │              │  │  1-ff00:0:132 ─── 2-ff00:0:212  │  │
  │                          │              │  └─────────────────────────────────┘  │
  │                          │              │  HTTP/3 server in 2-ff00:0:212        │
  └──────────────────────────┘              └───────────────────────────────────────┘
@@ -176,8 +176,9 @@ brew install --cask raspberry-pi-imager
 ### Writing the card
 
 1. Start the imager and choose device *Raspberry Pi 5*.
-2. Choose *Raspberry Pi OS (64-bit)* as the operating system. The 64-bit version matters:
-   the cross compilation below builds for a 64-bit target.
+2. As the operating system, open *Raspberry Pi OS (other)* and choose *Raspberry Pi OS Lite
+   (64-bit)*. Lite leaves out the desktop, which you do not need on a gateway you reach over
+   SSH. The 64-bit version matters: the cross compilation below builds for a 64-bit target.
 3. Choose your SD card and continue to *Edit settings*. Set a hostname, a user name and
    password, your WLAN network, and enable SSH under *Services*. This is what saves you from
    needing a keyboard and monitor for the Pi.
